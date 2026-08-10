@@ -10,7 +10,7 @@
   "use strict";
 
   const SITE_NAME = "王者荣耀游乐场";
-  const SITE_URL = "http://komozyw.com/hok/";
+  const SITE_URL = "https://komozyw.com/hok/"; // 2026-08-11 起 HTTPS 可用
 
   // ---------- 随机与每日种子 ----------
 

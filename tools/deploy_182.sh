@@ -17,4 +17,4 @@ rsync -az --delete -e "ssh -i $KEY" \
 curl -sf -o /dev/null -w "182 /hok/ 自检 HTTP %{http_code}\n" "http://182.254.155.14/hok/"
 curl -sf -o /dev/null -w "182 /hok/ 头像自检 HTTP %{http_code}\n" "http://182.254.155.14/hok/assets/avatars/105.jpg"
 curl -sf -o /dev/null -w "182 /hok/ 数据自检 HTTP %{http_code}\n" "http://182.254.155.14/hok/data/heroes.json"
-echo "部署完成：http://182.254.155.14/hok/  http://komozyw.com/hok/"
+echo "部署完成：http://182.254.155.14/hok/  https://komozyw.com/hok/"

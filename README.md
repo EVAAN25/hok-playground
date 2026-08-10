@@ -2,7 +2,7 @@
 
 非官方王者荣耀粉丝同人小游戏站，纯静态多页（vanilla JS 无构建），仓库根即站点根。
 
-**线上**：http://komozyw.com/hok/ （国内直连，分享卡带此地址）｜ https://evaan25.github.io/hok-playground/ （GitHub Pages 镜像，国内访问需代理）
+**线上**：https://komozyw.com/hok/ （国内直连，分享卡带此地址）｜ https://evaan25.github.io/hok-playground/ （GitHub Pages 镜像，国内访问需代理）
 
 更新纪律：`git push`（Pages 自动）→ `bash tools/deploy_182.sh`（komozyw/182，rsync 排除开发件，脚本带自检）。
 
