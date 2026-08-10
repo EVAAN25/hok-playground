@@ -10,7 +10,7 @@
   "use strict";
 
   const SITE_NAME = "王者荣耀游乐场";
-  const SITE_URL = "https://evaan25.github.io/hok-playground/";
+  const SITE_URL = "http://komozyw.com/hok/";
 
   // ---------- 随机与每日种子 ----------
 
