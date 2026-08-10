@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>台词猜人 · 王者荣耀游乐场</title>
+<meta name="description" content="看文字台词或听语音猜王者荣耀英雄，猜错逐步解锁场景/皮肤/情感提示。">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <h1><a href="index.html">王者荣耀<span class="accent">游乐场</span></a></h1>
+  <p class="tagline">台词猜人</p>
+</header>
+
+<nav class="page-nav"><a href="index.html">← 返回游乐场</a></nav>
+
+<main>
+  <div class="game-head">
+    <h2>📜 台词猜人</h2>
+    <div class="mode-tabs" data-game="quotes">
+      <button class="mode-tab active" data-mode="daily">每日挑战</button>
+      <button class="mode-tab" data-mode="practice">无限模式</button>
+    </div>
+  </div>
+
+  <div class="sub-tabs" id="subTabs">
+    <button class="sub-tab active" data-sub="text">📜 文字台词</button>
+    <button class="sub-tab" data-sub="audio">🎧 语音台词</button>
+  </div>
+
+  <p class="mode-banner" id="banner"></p>
+
+  <div id="loadBox"></div>
+  <div id="gameBox" class="hidden">
+    <div class="quote-card" id="quoteCard">
+      <p class="quote-text" id="quoteText"></p>
+    </div>
+    <div class="voice-stage hidden" id="voiceStage">
+      <div class="v-icon">🎧</div>
+      <p>点击下方按钮播放语音（可重复播放）</p>
+      <div class="voice-controls">
+        <button class="btn" id="playBtn">▶ 播放语音</button>
+      </div>
+    </div>
+
+    <div class="clue-list" id="hints"></div>
+
+    <div class="guess-bar">
+      <div class="input-wrap">
+        <input id="guessInput" type="text" placeholder="输入英雄名或拼音，如：李白 / libai"
+               autocomplete="off" autocapitalize="off" spellcheck="false">
+        <ul id="guessSuggest" class="suggest-list hidden"></ul>
+      </div>
+      <button class="btn ghost" id="skipBtn">跳过 ⏭</button>
+      <span class="tries-left" id="tries"></span>
+    </div>
+
+    <div class="chips" id="chips"></div>
+    <div id="result" class="result hidden"></div>
+  </div>
+
+  <details class="legend">
+    <summary>规则</summary>
+    <ul>
+      <li>文字模式直接给出一条台词；语音模式播放该英雄的一条语音（台词库音频热链，含部分 wav）。</li>
+      <li>每猜错（或跳过）一次解锁一条提示：① 场景 ② 皮肤 ③ 情感 ④ 同英雄的另一条台词，共 6 次机会。</li>
+      <li>文字 / 语音是两个独立子模式，每日各一题；进度存在本机浏览器里。</li>
+    </ul>
+  </details>
+</main>
+
+<footer class="site-footer">
+  <p>非官方粉丝同人作品，与腾讯及天美工作室群无关。《王者荣耀》游戏素材、台词与音频版权归原厂商所有，仅作学习交流。</p>
+  <p>数据来源：三方台词库 honor-king-quotes v2.4（18826 条，音频热链 game.gtimg.cn）、王者荣耀官网资料站。少数新英雄（盾山 / 心魔六耳 / 卢雅那）暂未被台词库收录，不会作为答案出现。</p>
+</footer>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="js/core.js"></script>
+<script src="js/common.js"></script>
+<script src="js/quotes.js"></script>
+</body>
+</html>

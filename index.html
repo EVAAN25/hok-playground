@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>王者荣耀游乐场 · 粉丝同人小游戏</title>
+<meta name="description" content="非官方王者荣耀粉丝同人小游戏：经典猜英雄、台词猜人、猜皮肤、人气对决、版本排排坐，每日一题。">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <h1><a href="index.html">王者荣耀<span class="accent">游乐场</span></a></h1>
+  <p class="tagline">王者荣耀粉丝同人小游戏</p>
+</header>
+
+<main>
+  <div class="home-grid">
+    <a class="home-card" href="classic.html">
+      <div class="hc-emoji">🎯</div>
+      <div class="hc-body">
+        <h2>经典猜英雄<span class="dot" id="dot-classic"></span></h2>
+        <p>Wordle 式五维比对：定位、分路、上线时间、皮肤数、性别，8 次机会逼近答案。</p>
+      </div>
+    </a>
+    <a class="home-card" href="quotes.html">
+      <div class="hc-emoji">📜</div>
+      <div class="hc-body">
+        <h2>台词猜人<span class="dot" id="dot-quotes"></span></h2>
+        <p>看文字台词或听语音猜英雄，猜错逐步解锁场景 / 皮肤 / 情感提示，6 次机会。</p>
+      </div>
+    </a>
+    <a class="home-card" href="skins.html">
+      <div class="hc-emoji">🖼️</div>
+      <div class="hc-body">
+        <h2>猜皮肤<span class="dot" id="dot-skins"></span></h2>
+        <p>从高度模糊的皮肤海报认出是哪位英雄，每猜错一次海报清晰一档，5 次机会。</p>
+      </div>
+    </a>
+    <a class="home-card" href="duel.html">
+      <div class="hc-emoji">🔥</div>
+      <div class="hc-body">
+        <h2>人气对决<span class="dot" id="dot-duel"></span></h2>
+        <p>B 站官号视频播放量比拼：右边这位的播放量更高还是更低？连胜计分。</p>
+      </div>
+    </a>
+    <a class="home-card" href="timeline.html">
+      <div class="hc-emoji">⏳</div>
+      <div class="hc-body">
+        <h2>版本排排坐<span class="dot" id="dot-timeline"></span></h2>
+        <p>把 5 位英雄按上线时间从早到晚排好，3 次提交机会。</p>
+      </div>
+    </a>
+  </div>
+  <p class="home-note">每个玩法每天一道题（按本地日期，全站同题），每日题做完可「再来一题」不限次续玩。进度存在本机浏览器里。</p>
+</main>
+
+<footer class="site-footer">
+  <p>非官方粉丝同人作品，与腾讯及天美工作室群无关。《王者荣耀》游戏素材、英雄形象、台词与音频版权归原厂商所有，仅作学习交流。</p>
+  <p>数据来源：王者荣耀官网资料站（pvp.qq.com 英雄/皮肤/台词音频）、三方台词库 honor-king-quotes v2.4、B站官号「王者荣耀」(mid 57863910) 视频播放量快照（2026-08-10）。</p>
+</footer>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="js/core.js"></script>
+<script src="js/common.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>经典猜英雄 · 王者荣耀游乐场</title>
+<meta name="description" content="Wordle 式五维比对猜王者荣耀英雄：定位、分路、上线时间、皮肤数、性别。">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <h1><a href="index.html">王者荣耀<span class="accent">游乐场</span></a></h1>
+  <p class="tagline">经典猜英雄</p>
+</header>
+
+<nav class="page-nav"><a href="index.html">← 返回游乐场</a></nav>
+
+<main>
+  <div class="game-head">
+    <h2>🎯 经典猜英雄</h2>
+    <div class="mode-tabs" data-game="classic">
+      <button class="mode-tab active" data-mode="daily">每日挑战</button>
+      <button class="mode-tab" data-mode="practice">无限模式</button>
+    </div>
+  </div>
+  <p class="mode-banner" id="banner"></p>
+
+  <div id="loadBox"></div>
+  <div id="gameBox" class="hidden">
+    <div class="guess-bar">
+      <div class="input-wrap">
+        <input id="guessInput" type="text" placeholder="输入英雄名或拼音，如：李白 / libai"
+               autocomplete="off" autocapitalize="off" spellcheck="false">
+        <ul id="guessSuggest" class="suggest-list hidden"></ul>
+      </div>
+      <span class="tries-left" id="tries"></span>
+    </div>
+
+    <div class="table-scroll">
+      <div class="guess-table">
+        <div class="grid-head guess-grid">
+          <span class="c-name">英雄</span><span>定位</span><span>分路</span>
+          <span>上线时间</span><span>皮肤数</span><span>性别</span>
+        </div>
+        <div id="rows" class="rows"></div>
+      </div>
+    </div>
+
+    <div id="result" class="result hidden"></div>
+  </div>
+
+  <details class="legend">
+    <summary>图例与规则</summary>
+    <ul>
+      <li>🟩 完全正确　🟨 部分接近（定位有交集 / 分路有交集）　⬜ 不对</li>
+      <li>⬆️ / ⬇️ 用于「上线时间 / 皮肤数」：⬆️ 表示答案比你猜的<b>更晚/更多</b>，⬇️ 表示更早/更少；上线时间同年即算 🟩。</li>
+      <li>分路为集合比对：双方分路完全相同=🟩，有交集=🟨，无交集=⬜。</li>
+      <li>题池为全量 132 位英雄；每日挑战按本地日期出题，同一天所有人同一题，共 8 次机会；进度存在本机浏览器里。</li>
+    </ul>
+  </details>
+</main>
+
+<footer class="site-footer">
+  <p>非官方粉丝同人作品，与腾讯及天美工作室群无关。《王者荣耀》游戏素材版权归原厂商所有，仅作学习交流。</p>
+  <p>数据来源：王者荣耀官网资料站（pvp.qq.com 英雄列表）、B站官号「王者荣耀」视频播放量快照（2026-08-10）。</p>
+</footer>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="js/core.js"></script>
+<script src="js/common.js"></script>
+<script src="js/classic.js"></script>
+</body>
+</html>

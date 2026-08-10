@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>猜皮肤 · 王者荣耀游乐场</title>
+<meta name="description" content="从渐进清晰的皮肤海报认出王者荣耀英雄，答出皮肤全名有加分。">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <h1><a href="index.html">王者荣耀<span class="accent">游乐场</span></a></h1>
+  <p class="tagline">猜皮肤</p>
+</header>
+
+<nav class="page-nav"><a href="index.html">← 返回游乐场</a></nav>
+
+<main>
+  <div class="game-head">
+    <h2>🖼️ 猜皮肤</h2>
+    <div class="mode-tabs" data-game="skins">
+      <button class="mode-tab active" data-mode="daily">每日挑战</button>
+      <button class="mode-tab" data-mode="practice">无限模式</button>
+    </div>
+  </div>
+  <p class="mode-banner" id="banner"></p>
+
+  <div id="loadBox"></div>
+  <div id="gameBox" class="hidden">
+    <div class="skin-stage">
+      <img id="poster" src="" alt="皮肤海报（模糊中）" referrerpolicy="no-referrer">
+    </div>
+    <p class="skin-level" id="levelText"></p>
+
+    <div class="guess-bar">
+      <div class="input-wrap">
+        <input id="guessInput" type="text" placeholder="猜英雄：输入英雄名或拼音"
+               autocomplete="off" autocapitalize="off" spellcheck="false">
+        <ul id="guessSuggest" class="suggest-list hidden"></ul>
+      </div>
+      <span class="tries-left" id="tries"></span>
+    </div>
+
+    <div class="chips" id="chips"></div>
+    <div id="result" class="result hidden"></div>
+  </div>
+
+  <details class="legend">
+    <summary>规则</summary>
+    <ul>
+      <li>海报初始高度模糊，每猜错一次降低一档模糊度（共 5 档，最后一档近乎原图），猜的是<b>英雄名</b>。</li>
+      <li>猜中英雄后有加分题：答出这款皮肤的全名（如「寅虎·御盾」）可在分享卡上加一颗 ⭐。</li>
+      <li>题池为官网资料站 847 款皮肤海报（热链 game.gtimg.cn）；每日挑战按本地日期出题，共 5 次机会。</li>
+    </ul>
+  </details>
+</main>
+
+<footer class="site-footer">
+  <p>非官方粉丝同人作品，与腾讯及天美工作室群无关。《王者荣耀》游戏素材、皮肤海报版权归原厂商所有，仅作学习交流。</p>
+  <p>数据来源：王者荣耀官网资料站（pvp.qq.com 皮肤列表，海报热链 game.gtimg.cn，已逐条校验可用性）。</p>
+</footer>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="js/core.js"></script>
+<script src="js/common.js"></script>
+<script src="js/skins.js"></script>
+</body>
+</html>

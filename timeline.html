@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>版本排排坐 · 王者荣耀游乐场</title>
+<meta name="description" content="把 5 位王者荣耀英雄按上线时间从早到晚排序，3 次提交机会。">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <h1><a href="index.html">王者荣耀<span class="accent">游乐场</span></a></h1>
+  <p class="tagline">版本排排坐</p>
+</header>
+
+<nav class="page-nav"><a href="index.html">← 返回游乐场</a></nav>
+
+<main>
+  <div class="game-head">
+    <h2>⏳ 版本排排坐</h2>
+    <div class="mode-tabs" data-game="timeline">
+      <button class="mode-tab active" data-mode="daily">每日挑战</button>
+      <button class="mode-tab" data-mode="practice">无限模式</button>
+    </div>
+  </div>
+  <p class="mode-banner" id="banner"></p>
+
+  <div id="loadBox"></div>
+  <div id="gameBox" class="hidden">
+    <div id="tlList" class="tl-list"></div>
+    <div class="tl-actions">
+      <button class="btn" id="submitBtn">提交排序</button>
+      <span class="tries-left" id="tries"></span>
+    </div>
+    <div id="attempts" class="tl-attempts"></div>
+    <div id="result" class="result hidden"></div>
+  </div>
+
+  <details class="legend">
+    <summary>规则</summary>
+    <ul>
+      <li>点两张卡片交换位置，把 5 位英雄按上线时间<b>从早到晚</b>排好（上早下晚），然后提交。</li>
+      <li>每次提交后逐位给出 🟩/🟥 反馈，共 3 次提交机会；排对或机会用完后公布正确日期。</li>
+      <li>题池剔除上线时间只有年份精度的英雄；两两上线间隔至少 30 天，避免糊在一起。</li>
+    </ul>
+  </details>
+</main>
+
+<footer class="site-footer">
+  <p>非官方粉丝同人作品，与腾讯及天美工作室群无关。《王者荣耀》游戏素材版权归原厂商所有，仅作学习交流。</p>
+  <p>数据来源：王者荣耀官网资料站（英雄列表）、公开资料整理的上线时间（按日精度）。</p>
+</footer>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="js/core.js"></script>
+<script src="js/common.js"></script>
+<script src="js/timeline.js"></script>
+</body>
+</html>

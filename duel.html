@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人气对决 · 王者荣耀游乐场</title>
+<meta name="description" content="王者荣耀英雄 B 站官号视频播放量 Higher-Lower 对决，连胜计分。">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <h1><a href="index.html">王者荣耀<span class="accent">游乐场</span></a></h1>
+  <p class="tagline">人气对决</p>
+</header>
+
+<nav class="page-nav"><a href="index.html">← 返回游乐场</a></nav>
+
+<main>
+  <div class="game-head">
+    <h2>🔥 人气对决</h2>
+    <div class="mode-tabs" data-game="duel">
+      <button class="mode-tab active" data-mode="daily">每日挑战</button>
+      <button class="mode-tab" data-mode="practice">无限模式</button>
+    </div>
+  </div>
+  <p class="mode-banner" id="banner"></p>
+
+  <div id="loadBox"></div>
+  <div id="gameBox" class="hidden">
+    <div class="pop-arena">
+      <div class="pop-card" id="cardLeft"></div>
+      <div class="pop-vs">VS</div>
+      <div class="pop-card" id="cardRight"></div>
+    </div>
+    <div class="pop-actions" id="actions">
+      <button class="btn" id="btnHigher">更高 ⬆️</button>
+      <button class="btn" id="btnLower">更低 ⬇️</button>
+    </div>
+    <p class="pop-streak" id="streak"></p>
+    <div id="result" class="result hidden"></div>
+
+    <p class="data-note" id="dataNote"></p>
+  </div>
+
+  <details class="legend">
+    <summary>规则</summary>
+    <ul>
+      <li>左边英雄的播放量已知，猜右边这位是更高还是更低；猜对连胜 +1 并继续，猜错本局结束结算。</li>
+      <li>播放量为 B 站官号「王者荣耀」全量视频按标题匹配英雄的播放量合计；每日挑战固定 10 轮，无限模式一直打到错。</li>
+      <li>播放量相同的组合不会出题；进度存在本机浏览器里。</li>
+    </ul>
+  </details>
+</main>
+
+<footer class="site-footer">
+  <p>非官方粉丝同人作品，与腾讯及天美工作室群无关。《王者荣耀》游戏素材版权归原厂商所有，仅作学习交流。</p>
+  <p>数据来源：B站官号「王者荣耀」(space.bilibili.com/mid 57863910) 视频播放量快照；王者荣耀官网资料站（英雄头像）。</p>
+</footer>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="js/core.js"></script>
+<script src="js/common.js"></script>
+<script src="js/duel.js"></script>
+</body>
+</html>
