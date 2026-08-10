@@ -94,6 +94,12 @@ function next30Days() {
   for (let i = 0; i < 30; i++) { out.push(HOK.dateStr(d)); d.setDate(d.getDate() + 1); }
   return out;
 }
+function next365Days() {
+  const out = [];
+  const d = new Date(2026, 0, 1);
+  for (let i = 0; i < 365; i++) { out.push(HOK.dateStr(d)); d.setDate(d.getDate() + 1); }
+  return out;
+}
 
 ok("确定性：五玩法同一日期两次出题结果相同", () => {
   for (const date of next30Days()) {
@@ -122,6 +128,34 @@ ok("确定性：duel 每日链长度 11（10 轮）、相邻播放量不同；ti
           "间隔不足 " + date);
   }
   function byIdPop(id) { return popData.data[id].views; }
+});
+
+ok("回归：365 天扫描 —— duel 链满 11 且相邻不同值；timeline 必出 5 人且日期两两不同", () => {
+  const byIdPop = (id) => popData.data[id].views;
+  for (const date of next365Days()) {
+    const chain = HOK.duelDailyChain(date, DPOOL);
+    assert.strictEqual(chain.length, HOK.DUEL_DAILY_ROUNDS + 1, "链不足 " + date);
+    for (let i = 1; i < chain.length; i++) {
+      assert.notStrictEqual(byIdPop(chain[i - 1]), byIdPop(chain[i]), "播放量平局 " + date);
+    }
+    const ids = HOK.timelineDaily(date, TPOOL);
+    assert.strictEqual(ids.length, HOK.TL_PICK, "timeline 不足 5 人 " + date);
+    const dates = ids.map((id) => byId[id].release.date);
+    assert.strictEqual(new Set(dates).size, HOK.TL_PICK, "上线日期撞车（排序多解）" + date);
+  }
+});
+
+ok("回归：元流之子 5 形态同播放量 —— 不可配对、duelNext 不返回同值", () => {
+  const ylz = DPOOL.filter((e) => e.name.startsWith("元流之子"));
+  assert(ylz.length >= 2, "元流之子形态数异常");
+  for (let i = 1; i < ylz.length; i++) {
+    assert.strictEqual(HOK.duelPairable(ylz[0], ylz[i]), false, "同值可配对：" + ylz[i].name);
+  }
+  // 从任一形态出发，随机 50 次下家都不同值
+  for (let i = 0; i < 50; i++) {
+    const n = HOK.duelNext(DPOOL, ylz[0]);
+    assert(n && n.views !== ylz[0].views, "duelNext 同值");
+  }
 });
 
 // ---------- 判定逻辑 ----------
@@ -194,6 +228,20 @@ ok("逻辑：searchHeroes 中文/拼音模糊匹配", () => {
   assert(r3.length > 0 && r3.length <= 8);
   const r4 = HOK.searchHeroes(HEROES, "李白", [r1[0].id]);
   assert(!r4.some((h) => h.name === "李白"), "排除失效");
+});
+
+ok("回归：searchHeroes 单字英雄 / 拼音冲突 / 括号名（半角+全角）", () => {
+  for (const n of ["镜", "瑶", "澜", "曜", "影", "铠"]) {
+    const r = HOK.searchHeroes(HEROES, n);
+    assert(r.length && r[0].name === n, "单字未命中 " + n);
+  }
+  assert.strictEqual(HOK.searchHeroes(HEROES, "libai")[0].name, "李白");
+  assert.strictEqual(HOK.searchHeroes(HEROES, "lixin")[0].name, "李信");
+  assert.strictEqual(HOK.searchHeroes(HEROES, "change")[0].name, "嫦娥");
+  assert.strictEqual(HOK.searchHeroes(HEROES, "元流之子(法师)")[0].name, "元流之子(法师)");
+  assert.strictEqual(HOK.searchHeroes(HEROES, "元流之子（法师）")[0].name, "元流之子(法师)", "全角括号不匹配");
+  const ylz = HOK.searchHeroes(HEROES, "元流之子");
+  assert(ylz.filter((h) => h.name.startsWith("元流之子")).length >= 5, "形态列不全");
 });
 
 // ---------- 分享卡 ----------

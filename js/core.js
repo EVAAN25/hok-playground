@@ -60,7 +60,9 @@
   // ---------- 通用：英雄名/拼音模糊搜索 ----------
 
   function normalize(s) {
-    return String(s == null ? "" : s).replace(/[·•.\s・''""]/g, "").toLowerCase();
+    // 全角括号（中文输入法默认）归一为半角，间隔号/空格/大小写不敏感
+    return String(s == null ? "" : s).replace(/（/g, "(").replace(/）/g, ")")
+      .replace(/[·•.\s・''""]/g, "").toLowerCase();
   }
 
   // 中文名/拼音模糊匹配，前缀命中排前；返回英雄对象数组

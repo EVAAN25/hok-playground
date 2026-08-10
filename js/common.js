@@ -76,7 +76,7 @@
     _dataCache[url] = fetch(url).then((r) => {
       if (!r.ok) throw new Error(`加载失败：${url}（HTTP ${r.status}）`);
       return r.json();
-    });
+    }, () => { throw new Error(`加载失败：${url}（网络错误）`); });
     return _dataCache[url];
   }
   // el 显示 loading，完成后替换为内容或错误
@@ -128,6 +128,7 @@
     input.addEventListener("focus", open);
     input.addEventListener("blur", () => setTimeout(close, 120));
     input.addEventListener("keydown", (e) => {
+      if (e.isComposing || e.keyCode === 229) return; // 中文输入法组词中，Enter/Esc 归输入法
       if (list.classList.contains("hidden")) {
         if (e.key === "Enter") { // 无候选直接精确匹配一次
           const exact = HOK.searchHeroes(heroes, input.value.trim(), getExclude(), 1);

@@ -110,7 +110,7 @@
         render();
       };
       $("#bonusBtn").onclick = submitBonus;
-      $("#bonusInput").addEventListener("keydown", (ev) => { if (ev.key === "Enter") submitBonus(); });
+      $("#bonusInput").addEventListener("keydown", (ev) => { if (ev.key === "Enter" && !ev.isComposing) submitBonus(); });
       $("#bonusSkip").onclick = () => { s.bonus = false; persist(); render(); };
     }
     $("#shareBtn").onclick = () => copyText(HOK.buildSkinShare({

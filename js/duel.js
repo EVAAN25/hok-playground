@@ -12,7 +12,11 @@
   const persist = () => { if (G.mode === "daily") store.set(dkey("duel"), JSON.stringify(G.daily)); };
   const pair = () => {
     const s = state();
-    if (G.mode === "daily") return [entryById[s.chain[s.pos]], entryById[s.chain[s.pos + 1]]];
+    if (G.mode === "daily") {
+      // 十连胜后 pos 越出链尾，结算页仍要渲染最后一对，钳位到链内
+      const i = Math.min(s.pos, s.chain.length - 2);
+      return [entryById[s.chain[i]], entryById[s.chain[i + 1]]];
+    }
     return [entryById[s.leftId], entryById[s.rightId]];
   };
 
@@ -140,6 +144,8 @@
       $("#btnLower").addEventListener("click", () => answer("lower"));
       render(false);
       if (state().status !== "playing") renderResult();
+    }).catch((err) => { // 嵌套加载 heroes.json 失败也要给错误提示，不能转圈到死
+      $("#loadBox").innerHTML = `<div class="loading error">⚠ ${err.message}，请刷新重试</div>`;
     });
   });
 })();
